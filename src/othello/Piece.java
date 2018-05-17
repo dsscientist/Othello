@@ -6,9 +6,9 @@ package othello;
  */
 public class Piece {
     
-    private enum State {EMPTY, WHITE, BLACK}
+    private enum Color {WHITE, BLACK}
     
-    public Piece() {
-        
+    public Piece(String s) {
+        Color c = Color.valueOf(s);
     }
 }

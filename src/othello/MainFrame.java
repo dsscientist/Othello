@@ -12,19 +12,20 @@ package othello;
 public class MainFrame extends javax.swing.JFrame {
 
     private HomeScreen hs;
-    private GameScreen gs;
-    private static final int SIDE_LENGTH = 1000;
+    private Board gs;
+    public static final int SIDE_LENGTH = 1000;
     
     public MainFrame() {
         initComponents();
         hs = new HomeScreen();
-        gs = new GameScreen();
+        gs = new Board();
         hs.setSize(SIDE_LENGTH, SIDE_LENGTH);
         gs.setSize(SIDE_LENGTH, SIDE_LENGTH);
         this.add(gs);
         this.add(hs);
         hs.setVisible(true);
         gs.setVisible(false);
+        this.setResizable(false);
     }
 
     /**

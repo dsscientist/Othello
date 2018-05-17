@@ -18,6 +18,7 @@ public class HomeScreen extends javax.swing.JPanel {
      */
     public HomeScreen() {
         initComponents();
+        
     }
 
     /**
@@ -29,19 +30,54 @@ public class HomeScreen extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        titleLabel = new javax.swing.JLabel();
+        twoPlayerBtn = new javax.swing.JButton();
+        howToPlayBtn = new javax.swing.JButton();
+
+        titleLabel.setFont(new java.awt.Font("Cambria", 0, 72)); // NOI18N
+        titleLabel.setForeground(new java.awt.Color(0, 153, 0));
+        titleLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        titleLabel.setText("OTHELLO");
+
+        twoPlayerBtn.setFont(new java.awt.Font("Cambria", 0, 24)); // NOI18N
+        twoPlayerBtn.setText("TWO PLAYER");
+
+        howToPlayBtn.setFont(new java.awt.Font("Cambria", 0, 24)); // NOI18N
+        howToPlayBtn.setText("HOW TO PLAY");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1000, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(300, 300, 300)
+                        .addComponent(twoPlayerBtn)
+                        .addGap(47, 47, 47)
+                        .addComponent(howToPlayBtn))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(340, 340, 340)
+                        .addComponent(titleLabel)))
+                .addContainerGap(295, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1000, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(260, 260, 260)
+                .addComponent(titleLabel)
+                .addGap(181, 181, 181)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(twoPlayerBtn)
+                    .addComponent(howToPlayBtn))
+                .addContainerGap(437, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton howToPlayBtn;
+    private javax.swing.JLabel titleLabel;
+    private javax.swing.JButton twoPlayerBtn;
     // End of variables declaration//GEN-END:variables
 }
