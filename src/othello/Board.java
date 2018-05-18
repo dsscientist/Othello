@@ -34,6 +34,15 @@ public class Board extends javax.swing.JPanel {
         whiteCount += 2;
         blackCount += 2;
     }
+    
+    public void addPiece(int x, int y, String color) {
+        gameBoard[x][y] = new Piece(color);
+        
+    }
+    
+    public boolean spaceEmpty(int x, int y) {
+        
+    }
 
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
@@ -51,6 +60,12 @@ public class Board extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                formMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -62,6 +77,10 @@ public class Board extends javax.swing.JPanel {
             .addGap(0, 1000, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
+        
+    }//GEN-LAST:event_formMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
