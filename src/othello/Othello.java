@@ -7,7 +7,7 @@ package othello;
 
 /**
  *
- * @author AudreyMa
+ * @author shirdav18
  */
 public class Othello {
 
@@ -15,7 +15,8 @@ public class Othello {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        MainFrame mf = new MainFrame();
+        mf.setVisible(true);
     }
     
 }
