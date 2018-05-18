@@ -6,6 +6,8 @@
 package othello;
 
 import java.awt.Graphics;
+import java.awt.Point;
+import java.util.ArrayList;
 import static othello.Board.SIDE_LENGTH;
 
 /**
@@ -41,7 +43,7 @@ public class Board extends javax.swing.JPanel {
     }
     
     public boolean spaceEmpty(int x, int y) {
-        
+        return gameBoard[x][y] == null;
     }
 
     public void paintComponent(Graphics g) {
@@ -50,7 +52,19 @@ public class Board extends javax.swing.JPanel {
             g.drawLine(125 * i, 0, 125 * i, MainFrame.SIDE_LENGTH);
             g.drawLine(0, 125 * i, MainFrame.SIDE_LENGTH, 125 * i);
         }
+        drawPieces(g);
     }
+    
+    public void drawPieces(Graphics g) {
+        
+    }
+    
+    public Point[] getEndPoints(int x, int y) {
+        ArrayList<Point> arr = new ArrayList<>();
+        for (int i = x - 1; x >= 0)
+        return ((Point[])arr.toArray());
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -79,7 +93,16 @@ public class Board extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
-        
+        int x = evt.getX() / 125;
+        int y = evt.getY() / 125;
+        if (spaceEmpty(x, y)) { // && valid spot to put piece
+            Point[] endPoints = getEndPoints(x, y);
+            if (endPoints.length == 0) {
+                //popup or message saying invalid location
+            } else {
+                
+            }
+        }
     }//GEN-LAST:event_formMouseClicked
 
 
