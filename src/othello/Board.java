@@ -5,6 +5,7 @@
  */
 package othello;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Point;
 import java.util.ArrayList;
@@ -56,7 +57,21 @@ public class Board extends javax.swing.JPanel {
     }
     
     public void drawPieces(Graphics g) {
-        
+        for (int i=0; i<gameBoard.length; i++){
+            for(int j=0; j<gameBoard[i].length;j++){
+                Piece temp = gameBoard[i][j];
+                if(temp!=null){
+                    if(temp.getColor()==Piece.Color.BLACK){
+                        g.setColor(Color.black);
+                    }
+                    else{
+                        g.setColor(Color.white);
+                    }
+                    g.fillOval(125*i + 2, 125*j + 2, 120, 120);
+                }
+               
+            }
+        }
     }
     
     public Point[] getEndPoints(int x, int y) {
@@ -74,6 +89,7 @@ public class Board extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        setBackground(new java.awt.Color(0, 153, 0));
         addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 formMouseClicked(evt);

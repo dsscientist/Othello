@@ -6,9 +6,14 @@ package othello;
  */
 public class Piece {
     
-    private enum Color {WHITE, BLACK}
+    public enum Color {WHITE, BLACK}
+    private Color color;
     
     public Piece(String s) {
-        Color c = Color.valueOf(s);
+        color = Color.valueOf(s.toUpperCase());
+    }
+    
+    public Color getColor() {
+        return color;
     }
 }

@@ -23,8 +23,8 @@ public class MainFrame extends javax.swing.JFrame {
         gs.setSize(SIDE_LENGTH, SIDE_LENGTH);
         this.add(gs);
         this.add(hs);
-        hs.setVisible(true);
-        gs.setVisible(false);
+        hs.setVisible(false);
+        gs.setVisible(true);
         this.setResizable(false);
     }
 
