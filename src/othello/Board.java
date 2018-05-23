@@ -86,17 +86,16 @@ public class Board extends javax.swing.JPanel {
                 } else {
                     if (gameBoard[i][y].getColor()==c) {
                         isOpposite = true;
-                    } else if (gameBoard[i][y].getColor()==c){ //same found
+                    } else { //same found
                         if (isOpposite) {
                             arr.add(new Point(i, y));
                         } else { //no opposite pieces between
                             break;
                         }
-                    } else {
-                        break;
                     }
                 }
             }
+            isOpposite = false;
             for (int i = x + 1; i < SIDE_LENGTH; i++) { //right
                 if (spaceEmpty(i, y)) {
                     break;
@@ -112,105 +111,99 @@ public class Board extends javax.swing.JPanel {
                     }
                 }
             }
+            isOpposite = false;
             for (int j = y - 1; j >= 0; j--) { //up
                 if (spaceEmpty(x, j)) {
                     break;
                 } else {
                     if (gameBoard[x][j].getColor()==c) {
                         isOpposite = true;
-                    } else if (gameBoard[x][j].getColor()==c){ //same found
+                    } else { //same found
                         if (isOpposite) {
                             arr.add(new Point(x, j));
                         } else { //no opposite pieces between
                             break;
                         }
-                    } else {
-                        break;
                     }
                 }
             }
+            isOpposite = false;
             for (int j = y + 1; j < SIDE_LENGTH; j++) { //down
                 if (spaceEmpty(x, j)) {
                     break;
                 } else {
                     if (gameBoard[x][j].getColor()==c) {
                         isOpposite = true;
-                    } else if (gameBoard[x][j].getColor()==c){ //same found
+                    } else { //same found
                         if (isOpposite) {
                             arr.add(new Point(x, j));
                         } else { //no opposite pieces between
                             break;
                         }
-                    } else {
-                        break;
                     }
                 }
             }
+            isOpposite = false;
             for (int i = 1; i <= Math.min(x, y); i++) { //up left
                 if (spaceEmpty(x-i, y-i)) {
                     break;
                 } else {
                     if (gameBoard[x-i][y-i].getColor()==c) {
                         isOpposite = true;
-                    } else if (gameBoard[x-i][y-i].getColor()==c){ //same found
+                    } else { //same found
                         if (isOpposite) {
                             arr.add(new Point(x-i, y-i));
                         } else { //no opposite pieces between
                             break;
                         }
-                    } else {
-                        break;
                     }
                 }
             }
+            isOpposite = false;
             for (int i = 1; i < SIDE_LENGTH - Math.min(x, y); i++) { //down right
                 if (spaceEmpty(x+i, y+i)) {
                     break;
                 } else {
                     if (gameBoard[x+i][y+i].getColor()==c) {
                         isOpposite = true;
-                    } else if (gameBoard[x+i][y+i].getColor()==c){ //same found
+                    } else { //same found
                         if (isOpposite) {
                             arr.add(new Point(x+i, y+i));
                         } else { //no opposite pieces between
                             break;
                         }
-                    } else {
-                        break;
                     }
                 }
             }
+            isOpposite = false;
             for (int i = 1; i <= Math.min(x, y); i++) { //up right
                 if (spaceEmpty(x+i, y-i)) {
                     break;
                 } else {
                     if (gameBoard[x+i][y-i].getColor()==c) {
                         isOpposite = true;
-                    } else if (gameBoard[x+i][y-i].getColor()==c){ //same found
+                    } else { //same found
                         if (isOpposite) {
                             arr.add(new Point(x+i, y-i));
                         } else { //no opposite pieces between
                             break;
                         }
-                    } else {
-                        break;
                     }
                 }
             }
+            isOpposite = false;
             for (int i = 1; i < SIDE_LENGTH - Math.min(x, y); i++) { //down left
                 if (spaceEmpty(x-i, y+i)) {
                     break;
                 } else {
                     if (gameBoard[x-i][y+i].getColor()==c) {
                         isOpposite = true;
-                    } else if (gameBoard[x-i][y+i].getColor()==c){ //same found
+                    } else { //same found
                         if (isOpposite) {
                             arr.add(new Point(x-i, y+i));
                         } else { //no opposite pieces between
                             break;
                         }
-                    } else {
-                        break;
                     }
                 }
             }
@@ -252,13 +245,15 @@ public class Board extends javax.swing.JPanel {
     private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
         int x = evt.getX() / 125;
         int y = evt.getY() / 125;
-        System.out.printf("%d %d", x, y);
+        System.out.printf("clicked: %d %d\n", x, y);
         if (spaceEmpty(x, y)) { // && valid spot to put piece
             List<Point> endPoints = getEndPoints(x, y);
             if (endPoints.size() == 0) {
                 //popup or message saying invalid location
             } else {
-                
+                for (Point p : endPoints) {
+                    System.out.println("end: " + p);
+                }
             }
         }
     }//GEN-LAST:event_formMouseClicked
