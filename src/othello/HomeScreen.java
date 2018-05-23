@@ -41,6 +41,11 @@ public class HomeScreen extends javax.swing.JPanel {
 
         twoPlayerBtn.setFont(new java.awt.Font("Cambria", 0, 24)); // NOI18N
         twoPlayerBtn.setText("TWO PLAYER");
+        twoPlayerBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                twoPlayerBtnActionPerformed(evt);
+            }
+        });
 
         howToPlayBtn.setFont(new java.awt.Font("Cambria", 0, 24)); // NOI18N
         howToPlayBtn.setText("HOW TO PLAY");
@@ -73,6 +78,11 @@ public class HomeScreen extends javax.swing.JPanel {
                 .addContainerGap(437, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void twoPlayerBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_twoPlayerBtnActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_twoPlayerBtnActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
