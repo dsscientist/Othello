@@ -84,7 +84,7 @@ public class Board extends javax.swing.JPanel {
                 if (spaceEmpty(i, y)) {
                     break;
                 } else {
-                    if (gameBoard[i][y].getColor()==c) {
+                    if (gameBoard[i][y].getColor()!=c) {
                         isOpposite = true;
                     } else { //same found
                         if (isOpposite) {
@@ -100,7 +100,7 @@ public class Board extends javax.swing.JPanel {
                 if (spaceEmpty(i, y)) {
                     break;
                 } else {
-                    if (gameBoard[i][y].getColor()==c) {
+                    if (gameBoard[i][y].getColor()!=c) {
                         isOpposite = true;
                     } else { //same found
                         if (isOpposite) {
@@ -116,7 +116,7 @@ public class Board extends javax.swing.JPanel {
                 if (spaceEmpty(x, j)) {
                     break;
                 } else {
-                    if (gameBoard[x][j].getColor()==c) {
+                    if (gameBoard[x][j].getColor()!=c) {
                         isOpposite = true;
                     } else { //same found
                         if (isOpposite) {
@@ -132,7 +132,7 @@ public class Board extends javax.swing.JPanel {
                 if (spaceEmpty(x, j)) {
                     break;
                 } else {
-                    if (gameBoard[x][j].getColor()==c) {
+                    if (gameBoard[x][j].getColor()!=c) {
                         isOpposite = true;
                     } else { //same found
                         if (isOpposite) {
@@ -148,7 +148,7 @@ public class Board extends javax.swing.JPanel {
                 if (spaceEmpty(x-i, y-i)) {
                     break;
                 } else {
-                    if (gameBoard[x-i][y-i].getColor()==c) {
+                    if (gameBoard[x-i][y-i].getColor()!=c) {
                         isOpposite = true;
                     } else { //same found
                         if (isOpposite) {
@@ -164,7 +164,7 @@ public class Board extends javax.swing.JPanel {
                 if (spaceEmpty(x+i, y+i)) {
                     break;
                 } else {
-                    if (gameBoard[x+i][y+i].getColor()==c) {
+                    if (gameBoard[x+i][y+i].getColor()!=c) {
                         isOpposite = true;
                     } else { //same found
                         if (isOpposite) {
@@ -180,7 +180,7 @@ public class Board extends javax.swing.JPanel {
                 if (spaceEmpty(x+i, y-i)) {
                     break;
                 } else {
-                    if (gameBoard[x+i][y-i].getColor()==c) {
+                    if (gameBoard[x+i][y-i].getColor()!=c) {
                         isOpposite = true;
                     } else { //same found
                         if (isOpposite) {
@@ -196,7 +196,7 @@ public class Board extends javax.swing.JPanel {
                 if (spaceEmpty(x-i, y+i)) {
                     break;
                 } else {
-                    if (gameBoard[x-i][y+i].getColor()==c) {
+                    if (gameBoard[x-i][y+i].getColor()!=c) {
                         isOpposite = true;
                     } else { //same found
                         if (isOpposite) {
