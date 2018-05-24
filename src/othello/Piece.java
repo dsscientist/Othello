@@ -16,4 +16,12 @@ public class Piece {
     public Color getColor() {
         return color;
     }
+    
+    public void flip() {
+        if (color==Color.BLACK) {
+            color = Color.WHITE;
+        } else {
+            color = Color.BLACK;
+        }
+    }
 }

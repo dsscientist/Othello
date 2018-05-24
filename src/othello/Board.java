@@ -214,6 +214,12 @@ public class Board extends javax.swing.JPanel {
         }
     }
     
+    private void flipPieces(List<Point> l, Point clicked) {
+        for (Point p : l) {
+            boolean above
+        }
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -254,8 +260,9 @@ public class Board extends javax.swing.JPanel {
                 for (Point p : endPoints) {
                     System.out.println("end: " + p);
                 }
+                
             }
-        }
+        } //otherwise, do nothing
     }//GEN-LAST:event_formMouseClicked
 
 
