@@ -41,7 +41,12 @@ public class Board extends javax.swing.JPanel {
     
     public void addPiece(int x, int y, String color) {
         gameBoard[x][y] = new Piece(color);
-        
+        repaint();
+    }
+    
+    public void addPiece(int x, int y, Piece.Color c) {
+        gameBoard[x][y] = new Piece(c);
+        repaint();
     }
     
     public boolean spaceEmpty(int x, int y) {
@@ -216,7 +221,37 @@ public class Board extends javax.swing.JPanel {
     
     private void flipPieces(List<Point> l, Point clicked) {
         for (Point p : l) {
-            boolean above
+            int xDif = Math.abs(p.x - clicked.x);
+            int yDif = Math.abs(p.y - clicked.y);
+            if (xDif > yDif) {
+                int minX = Math.min(p.x, clicked.x);
+                int minY = Math.min(p.y, clicked.y);
+                //horizontal row
+                for (int i = minX + 1; i < Math.max(p.x, clicked.x); i++) {
+                    gameBoard[i][clicked.y].flip();
+                }
+            } else {
+                int minX = Math.min(p.x, clicked.x);
+                int minY = Math.min(p.y, clicked.y);
+                if (xDif == 0) { //vertical column               
+                    for (int j = minY + 1; j < Math.max(p.y, clicked.y); j++) {
+                        gameBoard[clicked.x][j].flip();
+                    }
+                } else { //diagonal
+                    for (int j = 1; j < yDif; j++) {
+                        gameBoard[minX + j][minY + j].flip();
+                    }
+                }
+            }
+        }
+        repaint();
+    }
+    
+    private void changeTurns() {
+        if (turn == Piece.Color.BLACK) {
+            turn = Piece.Color.WHITE;
+        } else {
+            turn = Piece.Color.BLACK;
         }
     }
     
@@ -256,11 +291,14 @@ public class Board extends javax.swing.JPanel {
             List<Point> endPoints = getEndPoints(x, y);
             if (endPoints.size() == 0) {
                 //popup or message saying invalid location
+                System.out.println("invalid");
             } else {
                 for (Point p : endPoints) {
                     System.out.println("end: " + p);
                 }
-                
+                addPiece(x, y, turn);
+                flipPieces(endPoints, new Point(x, y));
+                changeTurns();
             }
         } //otherwise, do nothing
     }//GEN-LAST:event_formMouseClicked

@@ -13,6 +13,10 @@ public class Piece {
         color = Color.valueOf(s.toUpperCase());
     }
     
+    public Piece(Color c) {
+        color = c;
+    }
+    
     public Color getColor() {
         return color;
     }
