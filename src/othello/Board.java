@@ -66,7 +66,7 @@ public class Board extends javax.swing.JPanel {
 
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
-        for (int i = 0; i < Board.SIDE_LENGTH; i++) {
+        for (int i = 0; i <= Board.SIDE_LENGTH; i++) {
             g.drawLine(125 * i, 0, 125 * i, MainFrame.SIDE_LENGTH);
             g.drawLine(0, 125 * i, MainFrame.SIDE_LENGTH, 125 * i);
         }
@@ -96,129 +96,145 @@ public class Board extends javax.swing.JPanel {
         if (spaceEmpty(x, y)) {
             ArrayList<Point> arr = new ArrayList<>();
             boolean isOpposite = false;
+            left:
             for (int i = x - 1; i >= 0; i--) { //left
                 if (spaceEmpty(i, y)) {
-                    break;
+                    break left;
                 } else {
                     if (gameBoard[i][y].getColor()!=c) {
                         isOpposite = true;
                     } else { //same found
                         if (isOpposite) {
                             arr.add(new Point(i, y));
+                            break left;
                         } else { //no opposite pieces between
-                            break;
+                            break left;
                         }
                     }
                 }
             }
             isOpposite = false;
+            right:
             for (int i = x + 1; i < SIDE_LENGTH; i++) { //right
                 if (spaceEmpty(i, y)) {
-                    break;
+                    break right;
                 } else {
                     if (gameBoard[i][y].getColor()!=c) {
                         isOpposite = true;
                     } else { //same found
                         if (isOpposite) {
                             arr.add(new Point(i, y));
+                            break right;
                         } else { //no opposite pieces between
-                            break;
+                            break right;
                         }
                     }
                 }
             }
             isOpposite = false;
+            up:
             for (int j = y - 1; j >= 0; j--) { //up
                 if (spaceEmpty(x, j)) {
-                    break;
+                    break up;
                 } else {
                     if (gameBoard[x][j].getColor()!=c) {
                         isOpposite = true;
                     } else { //same found
                         if (isOpposite) {
                             arr.add(new Point(x, j));
+                            break up;
                         } else { //no opposite pieces between
-                            break;
+                            break up;
                         }
                     }
                 }
             }
             isOpposite = false;
+            down:
             for (int j = y + 1; j < SIDE_LENGTH; j++) { //down
                 if (spaceEmpty(x, j)) {
-                    break;
+                    break down;
                 } else {
                     if (gameBoard[x][j].getColor()!=c) {
                         isOpposite = true;
                     } else { //same found
                         if (isOpposite) {
                             arr.add(new Point(x, j));
+                            break down;
                         } else { //no opposite pieces between
-                            break;
+                            break down;
                         }
                     }
                 }
             }
             isOpposite = false;
+            upLeft:
             for (int i = 1; i <= SIDE_LENGTH - Math.max(x, y); i++) { //up left
                 if (spaceEmpty(x-i, y-i)) {
-                    break;
+                    break upLeft;
                 } else {
                     if (gameBoard[x-i][y-i].getColor()!=c) {
                         isOpposite = true;
                     } else { //same found
                         if (isOpposite) {
                             arr.add(new Point(x-i, y-i));
+                            break upLeft;
                         } else { //no opposite pieces between
-                            break;
+                            break upLeft;
                         }
                     }
                 }
             }
             isOpposite = false;
+            downRight:
             for (int i = 1; i < SIDE_LENGTH - Math.max(x, y); i++) { //down right
                 if (spaceEmpty(x+i, y+i)) {
-                    break;
+                    break downRight;
                 } else {
                     if (gameBoard[x+i][y+i].getColor()!=c) {
                         isOpposite = true;
                     } else { //same found
                         if (isOpposite) {
                             arr.add(new Point(x+i, y+i));
+                            break downRight;
                         } else { //no opposite pieces between
-                            break;
+                            break downRight;
                         }
                     }
                 }
             }
             isOpposite = false;
-            for (int i = 1; i < SIDE_LENGTH - Math.max(x, y); i++) { //up right
+            upRight:
+            for (int i = 1; x + i < SIDE_LENGTH || y - i >= 0; i++) { //up right
                 if (spaceEmpty(x+i, y-i)) {
-                    break;
+                    break upRight;
                 } else {
                     if (gameBoard[x+i][y-i].getColor()!=c) {
                         isOpposite = true;
                     } else { //same found
                         if (isOpposite) {
                             arr.add(new Point(x+i, y-i));
+                            break upRight;
                         } else { //no opposite pieces between
-                            break;
+                            break upRight;
                         }
                     }
                 }
             }
             isOpposite = false;
-            for (int i = 1; i < SIDE_LENGTH - Math.max(x, y); i++) { //down left
+            downLeft:
+            for (int i = 1; x - i >= 0 || y + i > SIDE_LENGTH; i++) { //down left
                 if (spaceEmpty(x-i, y+i)) {
-                    break;
+                    break downLeft;
                 } else {
                     if (gameBoard[x-i][y+i].getColor()!=c) {
                         isOpposite = true;
                     } else { //same found
                         if (isOpposite) {
                             arr.add(new Point(x-i, y+i));
+                            break downLeft;
                         } else { //no opposite pieces between
-                            break;
+                            break downLeft;
                         }
                     }
                 }
