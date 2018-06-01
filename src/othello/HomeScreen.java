@@ -13,10 +13,10 @@ import java.awt.Graphics;
  */
 public class HomeScreen extends javax.swing.JPanel {
 
-    /**
-     * Creates new form HomeScreen
-     */
-    public HomeScreen() {
+    private javax.swing.JFrame parent;
+    
+    public HomeScreen(javax.swing.JFrame jf) {
+        parent = jf;
         initComponents();
         
     }
@@ -41,6 +41,11 @@ public class HomeScreen extends javax.swing.JPanel {
 
         twoPlayerBtn.setFont(new java.awt.Font("Cambria", 0, 24)); // NOI18N
         twoPlayerBtn.setText("TWO PLAYER");
+        twoPlayerBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                twoPlayerBtnMouseClicked(evt);
+            }
+        });
         twoPlayerBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 twoPlayerBtnActionPerformed(evt);
@@ -83,6 +88,10 @@ public class HomeScreen extends javax.swing.JPanel {
         // TODO add your handling code here:
         
     }//GEN-LAST:event_twoPlayerBtnActionPerformed
+
+    private void twoPlayerBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_twoPlayerBtnMouseClicked
+        ((MainFrame)parent).switchScreen("game");
+    }//GEN-LAST:event_twoPlayerBtnMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -17,20 +17,30 @@ public class MainFrame extends javax.swing.JFrame {
     
     public MainFrame() {
         initComponents();
-        hs = new HomeScreen();
+        hs = new HomeScreen(this);
         gs = new Board(this);
         hs.setSize(SIDE_LENGTH, SIDE_LENGTH);
         gs.setSize(SIDE_LENGTH, SIDE_LENGTH);
         this.add(gs);
         this.add(hs);
-        hs.setVisible(false);
-        gs.setVisible(true);
+        hs.setVisible(true);
+        gs.setVisible(false);
         this.setResizable(false);
         updateTurn(gs.getTurn());
     }
 
     void updateTurn(String s) {
         jLabel1.setText(s);
+    }
+    
+    void switchScreen(String s) {
+        if (s.equals("home")) {
+            gs.setVisible(false);
+            hs.setVisible(true);
+        } else if (s.equals("game")) {
+            hs.setVisible(false);
+            gs.setVisible(true);
+        }
     }
     
     /**
