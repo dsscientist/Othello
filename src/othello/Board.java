@@ -21,6 +21,7 @@ public class Board extends javax.swing.JPanel {
     public static final int SIDE_LENGTH = 8;
     private int whiteCount;
     private int blackCount;
+    private int totalCount;
     private Piece.Color turn = Piece.Color.BLACK;
     private javax.swing.JFrame parent;
     //keep track of whose turn it is?
@@ -42,21 +43,31 @@ public class Board extends javax.swing.JPanel {
     }
     
     private void initializeStart() {
-        gameBoard[3][3] = new Piece("white");
-        gameBoard[4][4] = new Piece("white");
-        gameBoard[3][4] = new Piece("black");
-        gameBoard[4][3] = new Piece("black");
-        whiteCount += 2;
-        blackCount += 2;
+        addPiece(3, 3, "white");
+        addPiece(4, 4, "white");
+        addPiece(3, 4, "black");
+        addPiece(4, 3, "black");
     }
     
     public void addPiece(int x, int y, String color) {
         gameBoard[x][y] = new Piece(color);
+        if (color.equals("black")) {
+            blackCount++;
+        } else {
+            whiteCount++;
+        }
+        totalCount++;
         repaint();
     }
     
     public void addPiece(int x, int y, Piece.Color c) {
         gameBoard[x][y] = new Piece(c);
+        if (c == Piece.Color.BLACK) {
+            blackCount++;
+        } else {
+            whiteCount++;
+        }
+        totalCount++;
         repaint();
     }
     
@@ -169,7 +180,7 @@ public class Board extends javax.swing.JPanel {
             }
             isOpposite = false;
             upLeft:
-            for (int i = 1; i <= SIDE_LENGTH - Math.max(x, y); i++) { //up left
+            for (int i = 1; x - i >= 0 && y - i >= 0; i++) { //up left
                 if (spaceEmpty(x-i, y-i)) {
                     break upLeft;
                 } else {
@@ -205,7 +216,7 @@ public class Board extends javax.swing.JPanel {
             }
             isOpposite = false;
             upRight:
-            for (int i = 1; x + i < SIDE_LENGTH || y - i >= 0; i++) { //up right
+            for (int i = 1; x + i < SIDE_LENGTH && y - i >= 0; i++) { //up right
                 if (spaceEmpty(x+i, y-i)) {
                     break upRight;
                 } else {
@@ -223,7 +234,7 @@ public class Board extends javax.swing.JPanel {
             }
             isOpposite = false;
             downLeft:
-            for (int i = 1; x - i >= 0 || y + i > SIDE_LENGTH; i++) { //down left
+            for (int i = 1; x - i >= 0 && y + i < SIDE_LENGTH; i++) { //down left
                 if (spaceEmpty(x-i, y+i)) {
                     break downLeft;
                 } else {
@@ -265,13 +276,42 @@ public class Board extends javax.swing.JPanel {
                         gameBoard[clicked.x][j].flip();
                     }
                 } else { //diagonal
-                    for (int j = 1; j < yDif; j++) {
-                        gameBoard[minX + j][minY + j].flip();
+                    boolean downLeft = clicked.x - p.x < 0 && clicked.y - p.x > 0;
+                    boolean upRight = clicked.x - p.x > 0 && clicked.y - p.x < 0;
+                    if (downLeft || upRight) {
+                        int maxY = Math.max(p.y, clicked.y);
+                        for (int j = 1; j < yDif; j++) {
+                            gameBoard[minX + j][maxY - j].flip();
+                        }
+                    } else {
+                        for (int j = 1; j < yDif; j++) {
+                            gameBoard[minX + j][minY + j].flip();
+                        }
                     }
                 }
             }
         }
         repaint();
+    }
+    
+    private void updateCount() {
+        whiteCount = 0;
+        blackCount = 0;
+        for (int i = 0; i < SIDE_LENGTH; i++) {
+            for (int j = 0; j < SIDE_LENGTH; j++) {
+                if (gameBoard[i][j] != null) {
+                    if (gameBoard[i][j].getColor() == Piece.Color.BLACK) {
+                        blackCount++;
+                    } else {
+                        whiteCount++;
+                    }
+                }
+            }
+        }
+        if (totalCount == Math.pow(SIDE_LENGTH, 2)) {
+            //end game
+        }
+        System.out.printf("white: %d\nblack: %d\n", whiteCount, blackCount);
     }
     
     private void changeTurns() {
@@ -314,7 +354,6 @@ public class Board extends javax.swing.JPanel {
     private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
         int x = evt.getX() / 125;
         int y = evt.getY() / 125;
-        System.out.println(evt.getX() + " " + evt.getY());
         System.out.printf("clicked: %d %d\n", x, y);
         if (spaceEmpty(x, y)) { // && valid spot to put piece
             List<Point> endPoints = getEndPoints(x, y);
@@ -327,6 +366,7 @@ public class Board extends javax.swing.JPanel {
                 }
                 addPiece(x, y, turn);
                 flipPieces(endPoints, new Point(x, y));
+                updateCount();
                 changeTurns();
             }
         } //otherwise, do nothing
