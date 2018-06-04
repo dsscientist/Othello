@@ -276,8 +276,8 @@ public class Board extends javax.swing.JPanel {
                         gameBoard[clicked.x][j].flip();
                     }
                 } else { //diagonal
-                    boolean downLeft = clicked.x - p.x < 0 && clicked.y - p.x > 0;
-                    boolean upRight = clicked.x - p.x > 0 && clicked.y - p.x < 0;
+                    boolean downLeft = clicked.x - p.x < 0 && clicked.y - p.y > 0;
+                    boolean upRight = clicked.x - p.x > 0 && clicked.y - p.y < 0;
                     if (downLeft || upRight) {
                         int maxY = Math.max(p.y, clicked.y);
                         for (int j = 1; j < yDif; j++) {
