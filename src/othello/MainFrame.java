@@ -13,6 +13,7 @@ public class MainFrame extends javax.swing.JFrame {
 
     private HomeScreen hs;
     private Board gs;
+    private HTPScreen htps;
     public static final int SIDE_LENGTH = 1000;
     
     public MainFrame() {
@@ -21,10 +22,13 @@ public class MainFrame extends javax.swing.JFrame {
         gs = new Board(this);
         hs.setSize(SIDE_LENGTH, SIDE_LENGTH);
         gs.setSize(SIDE_LENGTH, SIDE_LENGTH);
+        htps.setSize(SIDE_LENGTH, SIDE_LENGTH);
         this.add(gs);
         this.add(hs);
+        this.add(htps);
         hs.setVisible(true);
         gs.setVisible(false);
+        htps.setVisible(false);
         this.setResizable(false);
         updateTurn(gs.getTurn());
     }
@@ -36,10 +40,16 @@ public class MainFrame extends javax.swing.JFrame {
     void switchScreen(String s) {
         if (s.equals("home")) {
             gs.setVisible(false);
+            htps.setVisible(false);
             hs.setVisible(true);
         } else if (s.equals("game")) {
             hs.setVisible(false);
+            htps.setVisible(false);
             gs.setVisible(true);
+        } else { //must be "how to play screen"
+            hs.setVisible(false);
+            gs.setVisible(false);
+            htps.setVisible(true);
         }
     }
     
