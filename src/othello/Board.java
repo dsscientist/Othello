@@ -323,6 +323,18 @@ public class Board extends javax.swing.JPanel {
         ((MainFrame)parent).updateTurn(getTurn());
     }
     
+    public boolean checkBoard(){
+        ArrayList<Point> points = new ArrayList<Point>();
+        for(int i=0; i<gameBoard.length; i++){
+            for(int j=0; j<gameBoard[i].length; j++){
+                if(gameBoard[i][j]==null && getEndPoints(i,j).size()!=0){
+                    points.add(new Point(i,j));
+                }
+            }
+        }
+        return points.isEmpty();
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -368,6 +380,12 @@ public class Board extends javax.swing.JPanel {
                 flipPieces(endPoints, new Point(x, y));
                 updateCount();
                 changeTurns();
+                if(totalCount >= 55){
+                    if(checkBoard()==true){
+                      
+                      changeTurns();
+                    }
+                }
             }
         } //otherwise, do nothing
     }//GEN-LAST:event_formMouseClicked
