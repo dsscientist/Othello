@@ -5,6 +5,10 @@
  */
 package othello;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
 /**
  *
  * @author shirdav18
@@ -12,11 +16,26 @@ package othello;
 public class HTPScreen extends javax.swing.JPanel {
 
     private MainFrame parent;
+    private File instructions;
     
-    public HTPScreen(MainFrame jf) {
+    public HTPScreen(MainFrame jf) throws FileNotFoundException {
         initComponents();
+        instructions = new File("how_to_play.txt");
+        //setHTPText();
+        htpText.setOpaque(false);
+        htpText.setVisible(true);
+        htpText.setEditable(false);
         parent = jf;
     }
+    
+    /*public void setHTPText() throws FileNotFoundException {
+        Scanner line = new Scanner(instructions);
+        htpText.setText("");
+        htpText.append(line.nextLine());
+        while (line.hasNextLine()) {
+            htpText.append(line.nextLine() + "\n");
+        }
+    }*/
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -27,19 +46,29 @@ public class HTPScreen extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        scrollyPane = new javax.swing.JScrollPane();
+        htpText = new javax.swing.JTextArea();
+
+        htpText.setColumns(20);
+        htpText.setRows(5);
+        htpText.setText("Each of the disks' two sides corresponds to one player; they are referred to here as light and dark after the sides of\nOthello pieces, but any counters with distinctive faces are suitable. The game may for example be played with a chessboard\nand Scrabble pieces, with one player letters and the other backs.\n\nThe historical version of Reversi starts with an empty board, and the first two moves by each player are in the four\ncentral squares of the board. The players place their disks alternately with their color facing up and no captures are\nmade. A player may choose to not play both pieces on the same diagonal, different from the standard Othello opening. It is\nalso possible to play variants of Reversi and Othello wherein the second player's second move may or must flip one of the\nopposite-colored disks (as variants closest to the normal games).\n\nFor the specific game of Othello (as technically differing from the historical Reversi), the rules state that the game\nbegins with four disks placed in a square in the middle of the grid, two facing white side up, two pieces with the dark\nside up, with same-colored disks on a diagonal with each other. Convention has initial board position such that the disks\nwith dark side up are to the north-east and south-west (from both players' perspectives), though this is only marginally\nmeaningful to play (where opening memorization is an issue, some players may benefit from consistency on this). If the\ndisks with dark side up are to the north-west and south-east, the board may be rotated by 90° clockwise or\ncounterclockwise. The dark player moves first.\n\nDark must place a piece with the dark side up on the board, in such a position that there exists at least one straight\n(horizontal, vertical, or diagonal) occupied line between the new piece and another dark piece, with one or more\ncontiguous light pieces between them. After placing the piece, dark turns over (flips, captures) all light pieces lying on\na straight line between the new piece and any anchoring dark pieces. All reversed pieces now show the dark side, and dark\ncan use them in later moves—unless light has reversed them back in the meantime. In other words, a valid move is one\nwhere at least one piece is reversed. Now light plays. This player operates under the same rules, with the roles reversed:\nlight lays down a light piece, causing a dark piece to flip. \n\nPlayers take alternate turns. If one player can not make a valid move, play passes back to the other player. When neither\nplayer can move, the game ends. This occurs when the grid has filled up or when neither player can legally place a piece in\nany of the remaining squares. This means the game may end before the grid is completely filled. This possibility may occur\nbecause one player has no pieces remaining on the board in that player's color. ");
+        scrollyPane.setViewportView(htpText);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1000, Short.MAX_VALUE)
+            .addComponent(scrollyPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1000, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1000, Short.MAX_VALUE)
+            .addComponent(scrollyPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1000, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextArea htpText;
+    private javax.swing.JScrollPane scrollyPane;
     // End of variables declaration//GEN-END:variables
 }

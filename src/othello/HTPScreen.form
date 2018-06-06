@@ -16,13 +16,28 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <EmptySpace min="0" pref="1000" max="32767" attributes="0"/>
+          <Component id="scrollyPane" alignment="0" pref="1000" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <EmptySpace min="0" pref="1000" max="32767" attributes="0"/>
+          <Component id="scrollyPane" alignment="0" pref="1000" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
+  <SubComponents>
+    <Container class="javax.swing.JScrollPane" name="scrollyPane">
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+      <SubComponents>
+        <Component class="javax.swing.JTextArea" name="htpText">
+          <Properties>
+            <Property name="columns" type="int" value="20"/>
+            <Property name="rows" type="int" value="5"/>
+            <Property name="text" type="java.lang.String" value="Each of the disks&apos; two sides corresponds to one player; they are referred to here as light and dark after the sides of&#xa;Othello pieces, but any counters with distinctive faces are suitable. The game may for example be played with a chessboard&#xa;and Scrabble pieces, with one player letters and the other backs.&#xa;&#xa;The historical version of Reversi starts with an empty board, and the first two moves by each player are in the four&#xa;central squares of the board. The players place their disks alternately with their color facing up and no captures are&#xa;made. A player may choose to not play both pieces on the same diagonal, different from the standard Othello opening. It is&#xa;also possible to play variants of Reversi and Othello wherein the second player&apos;s second move may or must flip one of the&#xa;opposite-colored disks (as variants closest to the normal games).&#xa;&#xa;For the specific game of Othello (as technically differing from the historical Reversi), the rules state that the game&#xa;begins with four disks placed in a square in the middle of the grid, two facing white side up, two pieces with the dark&#xa;side up, with same-colored disks on a diagonal with each other. Convention has initial board position such that the disks&#xa;with dark side up are to the north-east and south-west (from both players&apos; perspectives), though this is only marginally&#xa;meaningful to play (where opening memorization is an issue, some players may benefit from consistency on this). If the&#xa;disks with dark side up are to the north-west and south-east, the board may be rotated by 90&#xb0; clockwise or&#xa;counterclockwise. The dark player moves first.&#xa;&#xa;Dark must place a piece with the dark side up on the board, in such a position that there exists at least one straight&#xa;(horizontal, vertical, or diagonal) occupied line between the new piece and another dark piece, with one or more&#xa;contiguous light pieces between them. After placing the piece, dark turns over (flips, captures) all light pieces lying on&#xa;a straight line between the new piece and any anchoring dark pieces. All reversed pieces now show the dark side, and dark&#xa;can use them in later moves&#x2014;unless light has reversed them back in the meantime. In other words, a valid move is one&#xa;where at least one piece is reversed. Now light plays. This player operates under the same rules, with the roles reversed:&#xa;light lays down a light piece, causing a dark piece to flip. &#xa;&#xa;Players take alternate turns. If one player can not make a valid move, play passes back to the other player. When neither&#xa;player can move, the game ends. This occurs when the grid has filled up or when neither player can legally place a piece in&#xa;any of the remaining squares. This means the game may end before the grid is completely filled. This possibility may occur&#xa;because one player has no pieces remaining on the board in that player&apos;s color. "/>
+          </Properties>
+        </Component>
+      </SubComponents>
+    </Container>
+  </SubComponents>
 </Form>

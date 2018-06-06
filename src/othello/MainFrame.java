@@ -5,6 +5,10 @@
  */
 package othello;
 
+import java.io.FileNotFoundException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author shirdav18
@@ -16,7 +20,7 @@ public class MainFrame extends javax.swing.JFrame {
     private HTPScreen htps;
     public static final int SIDE_LENGTH = 1000;
     
-    public MainFrame() {
+    public MainFrame() throws FileNotFoundException {
         initComponents();
         hs = new HomeScreen(this);
         gs = new Board(this);
@@ -47,7 +51,7 @@ public class MainFrame extends javax.swing.JFrame {
             hs.setVisible(false);
             htps.setVisible(false);
             gs.setVisible(true);
-        } else { //must be "how to play screen"
+        } else { //must be "htp"
             hs.setVisible(false);
             gs.setVisible(false);
             htps.setVisible(true);
@@ -126,7 +130,11 @@ public class MainFrame extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MainFrame().setVisible(true);
+                try {
+                    new MainFrame().setVisible(true);
+                } catch (FileNotFoundException ex) {
+                    Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }

@@ -13,9 +13,9 @@ import java.awt.Graphics;
  */
 public class HomeScreen extends javax.swing.JPanel {
 
-    private javax.swing.JFrame parent;
+    private MainFrame parent;
     
-    public HomeScreen(javax.swing.JFrame jf) {
+    public HomeScreen(MainFrame jf) {
         parent = jf;
         initComponents();
         
@@ -54,6 +54,11 @@ public class HomeScreen extends javax.swing.JPanel {
 
         howToPlayBtn.setFont(new java.awt.Font("Cambria", 0, 24)); // NOI18N
         howToPlayBtn.setText("HOW TO PLAY");
+        howToPlayBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                howToPlayBtnMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -90,8 +95,12 @@ public class HomeScreen extends javax.swing.JPanel {
     }//GEN-LAST:event_twoPlayerBtnActionPerformed
 
     private void twoPlayerBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_twoPlayerBtnMouseClicked
-        ((MainFrame)parent).switchScreen("game");
+        parent.switchScreen("game");
     }//GEN-LAST:event_twoPlayerBtnMouseClicked
+
+    private void howToPlayBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_howToPlayBtnMouseClicked
+        parent.switchScreen("htp");
+    }//GEN-LAST:event_howToPlayBtnMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

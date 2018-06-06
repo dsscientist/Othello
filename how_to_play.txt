@@ -1,7 +1,5 @@
-a
-b
-c
-d
-e
-f
-g
+How to Play:
+  Gameplay begins with two black and two white pieces around the center
+Black goes first. The current player clicks on any open cell such that a
+contiguous run (vertical, horizontal, or diagonal) exists between two of
+his or her color pieces (both white or black) with the other player's pieces.
