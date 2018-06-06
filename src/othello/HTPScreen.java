@@ -11,11 +11,11 @@ package othello;
  */
 public class HTPScreen extends javax.swing.JPanel {
 
-    /**
-     * Creates new form HTPScreen
-     */
-    public HTPScreen() {
+    private MainFrame parent;
+    
+    public HTPScreen(MainFrame jf) {
         initComponents();
+        parent = jf;
     }
 
     /**

@@ -20,6 +20,7 @@ public class MainFrame extends javax.swing.JFrame {
         initComponents();
         hs = new HomeScreen(this);
         gs = new Board(this);
+        htps = new HTPScreen(this);
         hs.setSize(SIDE_LENGTH, SIDE_LENGTH);
         gs.setSize(SIDE_LENGTH, SIDE_LENGTH);
         htps.setSize(SIDE_LENGTH, SIDE_LENGTH);
