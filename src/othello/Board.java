@@ -382,7 +382,7 @@ public class Board extends javax.swing.JPanel {
                 changeTurns();
                 if(totalCount >= 55){
                     if(checkBoard()==true){
-                      
+                        System.out.println("no possible moves, change turns");
                       changeTurns();
                     }
                 }

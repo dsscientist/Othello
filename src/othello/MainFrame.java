@@ -22,8 +22,10 @@ public class MainFrame extends javax.swing.JFrame {
     
     public MainFrame() throws FileNotFoundException {
         initComponents();
+        this.setTitle("OTHELLO");
         hs = new HomeScreen(this);
-        gs = new Board(this);
+        gs = new Board(this);this.setTitle("OTHELLO");
+        hs = new HomeScreen(this);
         htps = new HTPScreen(this);
         hs.setSize(SIDE_LENGTH, SIDE_LENGTH);
         gs.setSize(SIDE_LENGTH, SIDE_LENGTH);
