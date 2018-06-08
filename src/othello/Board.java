@@ -384,6 +384,7 @@ public class Board extends javax.swing.JPanel {
                     if(checkBoard()==true){
                       PopUp InvalidPlay = new PopUp("Invalid Play", false, (MainFrame) parent);
                       InvalidPlay.setVisible(true);
+                        System.out.println("no possible moves, change turns");
                       changeTurns();
                     }
                 }
