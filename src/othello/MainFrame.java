@@ -32,6 +32,7 @@ public class MainFrame extends javax.swing.JFrame {
         htps.setSize(SIDE_LENGTH, SIDE_LENGTH);
         this.add(gs);
         this.add(hs);
+        //
         this.add(htps);
         hs.setVisible(true);
         gs.setVisible(false);
