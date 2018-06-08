@@ -382,9 +382,13 @@ public class Board extends javax.swing.JPanel {
                 changeTurns();
                 if(totalCount >= 55){
                     if(checkBoard()==true){
-                      
+                      PopUp InvalidPlay = new PopUp("Invalid Play", false, (MainFrame) parent);
+                      InvalidPlay.setVisible(true);
                       changeTurns();
                     }
+                }
+                else if(totalCount==64){
+                    PopUp endGame = new PopUp(turn.toString(),true,(MainFrame) parent);
                 }
             }
         } //otherwise, do nothing
