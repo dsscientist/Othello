@@ -5,6 +5,7 @@
  */
 package othello;
 
+import java.awt.Font;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
@@ -22,7 +23,7 @@ public class HTPScreen extends javax.swing.JPanel {
         initComponents();
         instructions = new File("how_to_play.txt");
         //setHTPText();
-        htpText.setFont(new java.awt.Font("Copperplate Gothic Bold", 0, 20));
+        htpText.setFont(new Font("Copperplate Gothic Bold",0,20));
         htpText.setOpaque(false);
         htpText.setVisible(true);
         htpText.setEditable(false);
