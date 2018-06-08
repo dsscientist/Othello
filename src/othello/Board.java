@@ -380,7 +380,7 @@ public class Board extends javax.swing.JPanel {
                 flipPieces(endPoints, new Point(x, y));
                 updateCount();
                 changeTurns();
-                if(totalCount >= 55){
+                if(totalCount >= 55 && totalCount < 64){
                     if(checkBoard()==true){
                       PopUp InvalidPlay = new PopUp("Invalid Play", false, (MainFrame) parent);
                       InvalidPlay.setVisible(true);
